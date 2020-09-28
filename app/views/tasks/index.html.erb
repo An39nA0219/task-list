@@ -1,0 +1,6 @@
+<h1>一覧</h1>
+<ul>
+    <% @tasks.each do |task| %>
+    <li><%= task.id %>：<%= task.content %></li>
+    <% end %>
+</ul>
