@@ -15,10 +15,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(tasks_params)
     if @task.save
-      #フラッシュ
+      flash[:success] = "正常に投稿されました"
       redirect_to @task
     else
-      #フラッシュ
+      flash[:danger] = "エラー：正常に投稿されませんでした"
       render :new
     end
   end
@@ -30,10 +30,10 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(tasks_params)
-      #フラッシュ
+      flash[:success] = "正常に投稿されました"
       redirect_to @task
     else
-      #フラッシュ
+      flash[:danger] = "エラー：正常に投稿されませんでした"
       render :edit
     end
   end
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    #フラッシュ
+    flash[:success] = "投稿が削除されました"
     redirect_to tasks_url
   end
 
