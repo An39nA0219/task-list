@@ -1,0 +1,12 @@
+<h1>タスクNo.<%= @task.id %>の詳細</h1>
+<table>
+    <tr>
+        <td>ID</td>
+        <td><%= @task.id %></td>
+    </tr>
+    <tr>
+        <td>content</td>
+        <td><%= @task.content %></td>
+    </tr>
+</table>
+<%= link_to '一覧へ', tasks_path %>
