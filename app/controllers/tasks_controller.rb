@@ -13,6 +13,14 @@ class TasksController < ApplicationController
   end
 
   def create
+    @task = Task.new(tasks_params)
+    if @task.save
+      #フラッシュ
+      redirect_to @task
+    else
+      #フラッシュ
+      render :new
+    end
   end
 
   def edit
@@ -22,6 +30,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def tasks_params
+    params.require(:task).permit(:content)
   end
 
 end
