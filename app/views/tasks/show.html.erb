@@ -11,3 +11,4 @@
 </table>
 <%= link_to '一覧へ', tasks_path %>
 <%= link_to 'タスクを編集', edit_task_path %>
+<%= link_to 'タスクを削除', @task, method: :delete, data: {confirm: '本当によいですか？'} %>

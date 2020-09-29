@@ -30,13 +30,19 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(tasks_params)
+      #フラッシュ
       redirect_to @task
     else
+      #フラッシュ
       render :edit
     end
   end
 
   def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    #フラッシュ
+    redirect_to tasks_url
   end
 
   private
