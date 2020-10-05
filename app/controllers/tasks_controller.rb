@@ -42,7 +42,7 @@ class TasksController < ApplicationController
     flash[:success] = "投稿が削除されました"
     redirect_to tasks_url
   end
-
+  
   private
   def set_tasks
     @task = Task.find(params[:id])
