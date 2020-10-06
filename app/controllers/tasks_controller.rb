@@ -1,9 +1,12 @@
 class TasksController < ApplicationController
+  include TasksHelper
   
   before_action :set_tasks, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks = Task.all.page(params[:page]).per(3)
+    if logged_in?
+      @tasks = current_user.tasks.page(params[:page]).per(3)
+    end
   end
   
   def show
@@ -14,12 +17,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(tasks_params)
+    @task = current_user.tasks.build(tasks_params)
     if @task.save
       flash[:success] = "正常に投稿されました"
       redirect_to @task
     else
-      flash[:danger] = "エラー：正常に投稿されませんでした"
+      flash.now[:danger] = "エラー：正常に投稿されませんでした"
       render :new
     end
   end
